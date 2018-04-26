@@ -853,7 +853,13 @@
                     if (!disabled)
                         cname += 'available';
 
-                    html += '<td class="' + cname.replace(/^\s+|\s+$/g, '') + '" data-title="' + 'r' + row + 'c' + col + '">' + calendar[row][col].date() + '</td>';
+                    html += '<td class="' + cname.replace(/^\s+|\s+$/g, '') + '" data-title="' + 'r' + row + 'c' + col + '">';
+
+                    if (cname.includes('today') || cname.includes('end-date')) {
+                        html += '<div class="day"><div class="circle">' + calendar[row][col].date() + '</div></div></td>'
+                    } else {
+                        html += '<div class="day">' + calendar[row][col].date() + '</div></td>'
+                    }
 
                 }
                 html += '</tr>';
